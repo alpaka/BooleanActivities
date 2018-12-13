@@ -1,0 +1,29 @@
+﻿<sap:ActivityDesigner x:Class="UiPathTeam.BooleanActivities.Design.ActivityWhileDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:sapv="clr-namespace:System.Activities.Presentation.View;assembly=System.Activities.Presentation"
+    xmlns:uad="clr-namespace:UiPath.Core.Activities.Design;assembly=UiPath.System.Activities.Design">
+    <uad:ActivityDecoratorControl>
+        <Grid>
+            <Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Uid="RowDefinition_1" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_2" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_3" Height="Auto"/>
+                <RowDefinition x:Uid="RowDefinition_4" Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="0,4,0,4" Grid.Row="0" x:Uid="Label_1" HorizontalAlignment="Left" Text="While"/>
+            <sap:WorkflowItemPresenter Name="ConditionPresenter" MinHeight="50" Grid.Row="1"
+                                AutomationProperties.AutomationId="Activity" DockPanel.Dock="Bottom"
+                                HintText="Drop Condition Activity here" AllowedItemType="{Binding Path=ModelItem.AllowedItemType}"  Item="{Binding Path=ModelItem.Condition}" >
+            </sap:WorkflowItemPresenter>
+            <TextBlock Margin="0,4,0,4" Grid.Row="2" x:Uid="Label_2" HorizontalAlignment="Left" Text="Do"/>
+            <sap:WorkflowItemPresenter Grid.Row="3" AllowedItemType="{x:Type sa:Activity}" IsDefaultContainer="true"
+                                       HintText="Drop Activity here" MinWidth="100" MinHeight="100" Margin="5,5,5,5"
+                                       Item="{Binding Path=ModelItem.Body, Mode=TwoWay}"/>
+        </Grid>
+    </uad:ActivityDecoratorControl>
+</sap:ActivityDesigner>

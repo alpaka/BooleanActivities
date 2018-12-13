@@ -1,0 +1,24 @@
+﻿<sap:ActivityDesigner x:Class="UiPathTeam.BooleanActivities.Design.ActivityAndDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:uad="clr-namespace:UiPath.Core.Activities.Design;assembly=UiPath.UIAutomation.Activities.Design"
+    xmlns:usad="clr-namespace:UiPath.Core.Activities.Design;assembly=UiPath.System.Activities.Design"
+    >
+    <usad:ActivityDecoratorControl>
+    <StackPanel>
+        <sap:WorkflowItemsPresenter x:Name="wfItemPresenter" HintText="Place Activities Here" Items="{Binding Path=ModelItem.ChildActivities}">
+            <sap:WorkflowItemsPresenter.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </sap:WorkflowItemsPresenter.ItemsPanel>
+            <sap:WorkflowItemsPresenter.SpacerTemplate>
+                <DataTemplate>
+                    <uad:WorkflowItemsPresenterConnector Focusable="true" Context="{Binding Path=Context}"/>
+                </DataTemplate>
+            </sap:WorkflowItemsPresenter.SpacerTemplate>
+        </sap:WorkflowItemsPresenter>
+    </StackPanel>
+    </usad:ActivityDecoratorControl>
+</sap:ActivityDesigner>

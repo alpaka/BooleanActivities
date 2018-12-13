@@ -1,0 +1,52 @@
+﻿<sap:ActivityDesigner x:Class="UiPathTeam.BooleanActivities.Design.ActivityIfDesigner"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
+    xmlns:sap="clr-namespace:System.Activities.Presentation;assembly=System.Activities.Presentation"
+    xmlns:uad="clr-namespace:UiPath.Core.Activities.Design;assembly=UiPath.System.Activities.Design"
+    Icon="{x:Static sap:WorkflowDesignerIcons+Activities.If}">
+    <uad:ActivityDecoratorControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Margin="0,4,0,4" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"
+                     Text="Condition" />
+        <TextBlock Margin="0,4,0,4" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center"
+                     Text="Then"/>
+        <TextBlock Margin="0,4,0,4" Grid.Row="2" Grid.Column="1"  HorizontalAlignment="Center"
+                     Text="Else"/>
+        <Border BorderThickness="1" HorizontalAlignment="Stretch"
+                Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="2" 
+                Margin="0,4,0,4">
+            <sap:WorkflowItemPresenter Name="ConditionPresenter" MinHeight="50"
+                                AutomationProperties.AutomationId="Activity" DockPanel.Dock="Bottom"
+                                HintText="Condition" AllowedItemType="{Binding Path=ModelItem.AllowedItemType}" Item="{Binding Path=ModelItem.Condition}" >
+            </sap:WorkflowItemPresenter>
+        </Border>
+        <Border BorderThickness="1" HorizontalAlignment="Center"
+                Grid.Row="3" Grid.Column="0" CornerRadius="2" 
+                Margin="0,0,3,0">
+            <sap:WorkflowItemPresenter Name="ThenPresenter" MinWidth="100" MinHeight="50"
+                                AutomationProperties.AutomationId="Activity" DockPanel.Dock="Bottom" 
+                                HintText="Then" Item="{Binding Path=ModelItem.Then}" 
+                                AllowedItemType="{x:Type sa:Activity}"/>
+        </Border>
+        <Border BorderThickness="1" HorizontalAlignment="Center"
+                Grid.Row="3" Grid.Column="1" CornerRadius="2" 
+                Margin="3,0,0,0">
+            <sap:WorkflowItemPresenter Name="ElsePresenter" MinWidth="10" MinHeight="50"
+                                AutomationProperties.AutomationId="Activity" DockPanel.Dock="Bottom" 
+                                HintText="Else" Item="{Binding Path=ModelItem.Else}"
+                                AllowedItemType="{x:Type sa:Activity}"/>
+        </Border>
+    </Grid>
+    </uad:ActivityDecoratorControl>
+</sap:ActivityDesigner>
