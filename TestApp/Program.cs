@@ -43,10 +43,11 @@ namespace TestApp
                     }
                 }
             };*/
-            
+
 
             /*var output = WorkflowInvoker.Invoke(vbe);
             Console.WriteLine(output);*/
+            Console.WriteLine("Test");
             Console.ReadLine();
         }
     }
