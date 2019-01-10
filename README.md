@@ -33,3 +33,19 @@ Alternatively, use directly from Visual Studio for use in Workflow Foundation
 ## Usage
 Simply drag and drop the desired activities onto the canvas. The main use in UiPath is together with 
 activities such as *ElementExists* - e.g. a "while element exists" loop.
+
+One important point to keep in mind is that the container activities (*ActivityAnd*, *ActivityOr* and *ActivityNot*)
+execute all child activities in parallel and cancel the other children as soon as possible. This is the same
+behaviour as you may be used to from the *Pick* activity. 
+For example, say you want to check for the existence of one of two elements on a website, **Foo** and **Bar**. 
+If either exists, you want to show an alert "Element found". If both aren't found, you want to display 
+an alert "No element found" after 3 seconds. 
+
+To build this in UiPath, drag an *ActivityIf* onto the canvas, add an *ActivityOr* container and put two 
+*ElementExists* activities with a timeout of 3000 ms inside the *ActivityOr* - one checking for **Foo** and the 
+other for **Bar**. 
+
+Imagine that you visit a website that contains only **Foo**. When UiPath finds **Foo**, *ActivityOr* will immediately cancel 
+the *ElementExists* that looks for **Bar**, so *ActivityIf* will execute quickly without having to wait for the 
+unsuccessful search for **Bar** to finish. This is effectively the same as using a *Pick* with multiple branches
+to set a boolean flag that you subsequently use in an *If* activity.
